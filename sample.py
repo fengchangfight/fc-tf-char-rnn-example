@@ -11,12 +11,13 @@ tf.flags.DEFINE_boolean('use_embedding', False, 'whether to use embedding')
 tf.flags.DEFINE_integer('embedding_size', 128, 'size of embedding')
 tf.flags.DEFINE_string('converter_path', '', 'model/name/converter.pkl')
 tf.flags.DEFINE_string('checkpoint_path', '', 'checkpoint path')
-tf.flags.DEFINE_string('start_string', '', 'use this string to start generating')
+tf.flags.DEFINE_string('start_string', '国', 'use this string to start generating')
 tf.flags.DEFINE_integer('max_length', 30, 'max length to generate')
 
 
 def main(_):
-    FLAGS.start_string = FLAGS.start_string.decode('utf-8')
+
+    FLAGS.start_string = FLAGS.start_string
     converter = TextConverter(filename=FLAGS.converter_path)
     if os.path.isdir(FLAGS.checkpoint_path):
         FLAGS.checkpoint_path =\
